@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OfficeApp
+ xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+ xsi:type="MailApp">
+
+  <Id>fec508dd-e4ea-470d-b761-f3227a23cc0c</Id>
+
+  <Version>1.0.0.0</Version>
+
+  <ProviderName>Josh Mosley</ProviderName>
+
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Copy Email Details"/>
+
+  <Description
+      DefaultValue="Copy cleaned email details to clipboard."/>
+
+  <IconUrl
+      DefaultValue="https://giplgwm.github.io/copy-email-add-in/assets/icon64.png"/>
+
+  <HighResolutionIconUrl
+      DefaultValue="https://giplgwm.github.io/copy-email-add-in/assets/icon128.png"/>
+
+  <SupportUrl
+      DefaultValue="https://giplgwm.github.io/copy-email-add-in"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.10"/>
+    </Sets>
+  </Requirements>
+
+  <Permissions>ReadItem</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule
+        xsi:type="ItemIs"
+        ItemType="Message"
+        FormType="Read"/>
+  </Rule>
+
+  <VersionOverrides
+      xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+      xsi:type="VersionOverridesV1_1">
+
+    <Hosts>
+
+      <Host xsi:type="MailHost">
+
+        <DesktopFormFactor>
+
+          <FunctionFile
+              resid="Commands.Url"/>
+
+          <ExtensionPoint
+              xsi:type="MessageReadCommandSurface">
+
+            <OfficeTab id="TabDefault">
+
+              <Group id="EmailTools">
+
+                <Label
+                    resid="Group.Label"/>
+
+                <Control
+                    xsi:type="Button"
+                    id="CopyEmailDetails">
+
+                  <Label
+                      resid="Button.Label"/>
+
+                  <Supertip>
+
+                    <Title
+                        resid="Button.Label"/>
+
+                    <Description
+                        resid="Button.Description"/>
+
+                  </Supertip>
+
+                  <Icon>
+
+                    <bt:Image
+                        size="16"
+                        resid="Icon16"/>
+
+                    <bt:Image
+                        size="32"
+                        resid="Icon32"/>
+
+                    <bt:Image
+                        size="80"
+                        resid="Icon80"/>
+
+                  </Icon>
+
+                  <Action
+                      xsi:type="ExecuteFunction">
+
+                    <FunctionName>
+                      copyEmailDetails
+                    </FunctionName>
+
+                  </Action>
+
+                </Control>
+
+              </Group>
+
+            </OfficeTab>
+
+          </ExtensionPoint>
+
+        </DesktopFormFactor>
+
+      </Host>
+
+    </Hosts>
+
+    <Resources>
+
+      <bt:Images>
+
+        <bt:Image
+            id="Icon16"
+            DefaultValue="https://giplgwm.github.io/copy-email-add-in/assets/icon16.png"/>
+
+        <bt:Image
+            id="Icon32"
+            DefaultValue="https://giplgwm.github.io/copy-email-add-in/assets/icon32.png"/>
+
+        <bt:Image
+            id="Icon80"
+            DefaultValue="https://giplgwm.github.io/copy-email-add-in/assets/icon80.png"/>
+
+      </bt:Images>
+
+      <bt:Urls>
+
+        <bt:Url
+            id="Commands.Url"
+            DefaultValue="https://giplgwm.github.io/copy-email-add-in/commands.html"/>
+
+      </bt:Urls>
+
+      <bt:ShortStrings>
+
+        <bt:String
+            id="Group.Label"
+            DefaultValue="Email Tools"/>
+
+        <bt:String
+            id="Button.Label"
+            DefaultValue="Copy Email Details"/>
+
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+
+        <bt:String
+            id="Button.Description"
+            DefaultValue="Copy sender, recipients, subject, and cleaned message body."/>
+
+      </bt:LongStrings>
+
+    </Resources>
+
+  </VersionOverrides>
+
+</OfficeApp>
